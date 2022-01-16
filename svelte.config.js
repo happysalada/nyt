@@ -15,8 +15,7 @@ const config = {
     // You can create optimized builds for different platforms by
     // specifying a different adapter
     adapter: adapter({
-      precompress: true,
-      fallback: '200.html'
+      precompress: true
     }),
     files: {
 			assets: 'static',
