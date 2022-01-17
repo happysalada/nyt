@@ -13,13 +13,19 @@
     attribution: '© OpenStreetMap contributors'
   }
   let leafletMap
+  export let markers: [{latLng: [number], popup: string, name: string}]
+  export let panelInfo: any
 </script>
 
-<div class="example" style="width: 100%; height: 100%;">
-  <LeafletMap bind:this={leafletMap} options={mapOptions}>
-    <TileLayer url={tileUrl} options={tileLayerOptions} />
-    <Marker latLng={[40.7369, -74.2937]}>
-      <Popup><b>Alpaca farm!</b></Popup>
-    </Marker>
-  </LeafletMap>
-</div>
+<!-- This example requires Tailwind CSS v2.0+ -->
+<LeafletMap bind:this={leafletMap} options={mapOptions}>
+  <TileLayer url={tileUrl} options={tileLayerOptions} />
+  {#each markers as {latLng, popup, name}}
+  <Marker {latLng} on:click={() => {
+    console.log("click")
+    panelInfo = name
+  }}>
+    <Popup><b>{popup}</b></Popup>
+  </Marker>
+  {/each}
+</LeafletMap>

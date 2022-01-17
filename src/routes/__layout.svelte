@@ -30,9 +30,6 @@
     <slot />
   </main>
   
-  <div class="footer">
-  </div>
-
 </div>
 {/if}
 
@@ -41,21 +38,12 @@
   /* minmax on the main is used for long main content */
   .grid {
     display: grid;
-    grid-template-columns: 5vw 90vw 5vw;
-    grid-template-rows: 10vh minmax(80vh, auto) 10vh;
+    grid-template-rows: 10vh minmax(90vh, auto);
     grid-template-areas:
-      'nav nav nav'
-      '. main .'
-      'footer footer footer'
+      'nav'
+      'main'
   }
   
-  
-  @media (min-width: 700px) {
-    .grid {
-      grid-template-columns: 15vw 70vw 15vw;
-    }
-  }
-
   .nav {
     grid-area: nav;
   }
@@ -64,8 +52,4 @@
     grid-area: main;
   }
   
-  .footer {
-    grid-area: footer;
-  }
-
 </style>
