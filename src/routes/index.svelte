@@ -2,6 +2,8 @@
   import { browser } from '$app/env'
   import { onMount } from 'svelte'
   import Search from '$lib/Search.svelte'
+  import SidePanel from '$lib/SidePanel.svelte'
+
   let MapComponent
   onMount(async () => {
     if (browser) {
@@ -63,8 +65,9 @@
   <div class="relative h-full w-full">
     <svelte:component this={MapComponent} markers={displayFarms} bind:panelInfo />
 	  <Search bind:allData={farms} bind:displayData={displayFarms} />
+    {#if panelInfo }
+      <SidePanel bind:panelInfo />
+    {/if}
   </div>
 {/if}
 
-<style>
-</style>

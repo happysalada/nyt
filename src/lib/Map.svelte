@@ -21,8 +21,7 @@
 <LeafletMap bind:this={leafletMap} options={mapOptions}>
   <TileLayer url={tileUrl} options={tileLayerOptions} />
   {#each markers as {latLng, popup, name}}
-  <Marker {latLng} on:click={() => {
-    console.log("click")
+  <Marker {latLng} events={['click']} on:click={() => {
     panelInfo = name
   }}>
     <Popup><b>{popup}</b></Popup>
