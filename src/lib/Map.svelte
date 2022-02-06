@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { LeafletMap, TileLayer, Marker, Popup } from 'svelte-leafletjs'
+  import { LeafletMap, TileLayer, Icon, Marker, Popup } from 'svelte-leafletjs'
   import 'leaflet/dist/leaflet.css'
+  import type { Agent } from "globals"
   const mapOptions = {
-    center: [40.7431, -74.2484],
-    zoom: 10
+    center: [41.083, -74.042],
+    zoom: 5
   }
   const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   const tileLayerOptions = {
@@ -13,18 +14,33 @@
     attribution: '© OpenStreetMap contributors'
   }
   let leafletMap
-  export let markers: [{latLng: [number], popup: string, name: string}]
-  export let panelInfo: any
+  export let agents: [Agent]
+  export let panelInfo: Agent | undefined;
+  const defaultIconOptions = {
+    iconSize: [41, 41],
+    iconAnchor: [20, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16 - 28]
+  }
 </script>
 
 <!-- This example requires Tailwind CSS v2.0+ -->
 <LeafletMap bind:this={leafletMap} options={mapOptions}>
   <TileLayer url={tileUrl} options={tileLayerOptions} />
-  {#each markers as {latLng, popup, name}}
-  <Marker {latLng} events={['click']} on:click={() => {
-    panelInfo = name
-  }}>
-    <Popup><b>{popup}</b></Popup>
-  </Marker>
+  {#each agents as agent}
+    <Marker
+      latLng={agent.latLng}
+      events={['click']}
+      on:click={() => {
+        panelInfo = agent
+      }}
+    >
+      {#if agent.iconUrl }
+        <Icon options={{iconUrl: agent.iconUrl}} />
+      {/if}
+      {#if agent.popup }
+      <Popup><b>{agent.popup}</b></Popup>
+      {/if}
+    </Marker>
   {/each}
 </LeafletMap>

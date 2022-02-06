@@ -24,7 +24,7 @@ module.exports = {
     // find out why it breaks the styles
     !dev &&
       cssnano({
-        preset: 'default',
-      }),
-  ],
+        preset: 'default'
+      })
+  ]
 }

@@ -1,13 +1,10 @@
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {
-    },
+    extend: {}
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [
-    require('@tailwindcss/forms')
-  ],
+  plugins: [require('@tailwindcss/forms')]
 }

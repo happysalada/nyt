@@ -7,8 +7,8 @@ const config = {
   // for more information about preprocessors
   preprocess: [
     sveltePreprocess({
-      postcss: true,
-    }),
+      postcss: true
+    })
   ],
   kit: {
     // By default, `npm run build` will create a standard Node app.
@@ -18,11 +18,9 @@ const config = {
       precompress: true
     }),
     files: {
-			assets: 'static',
-    },
-    // hydrate the <div id="svelte"> element in src/app.html
-    target: '#svelte',
-  },
+      assets: 'static'
+    }
+  }
 }
 
 export default config

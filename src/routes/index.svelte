@@ -3,6 +3,7 @@
   import { onMount } from 'svelte'
   import Search from '$lib/Search.svelte'
   import SidePanel from '$lib/SidePanel.svelte'
+  import allAgents from '$lib/data/agents.json'
 
   let MapComponent
   onMount(async () => {
@@ -10,61 +11,16 @@
       MapComponent = (await import('$lib/Map.svelte')).default
     }
   })
-  let farms = [
-    {
-      name: 'Alpaca farm',
-      latLng: [40.7369, -74.2937],
-      popup: 'Alpaca farm!',
-      offers: [
-        {
-          quantity: 60,
-          unit: 'pounds',
-          resourceType: {
-            color: 'brown',
-            fabric: 'alpaca'
-          }
-        }
-      ]
-    },
-    {
-      name: 'Sheep farm',
-      popup: 'Sheep farm!',
-      latLng: [40.7571, -74.3424],
-      offers: [
-        {
-          quantity: 60,
-          unit: 'pounds',
-          resourceType: {
-            color: 'gray',
-            fabric: 'wool'
-          }
-        }
-      ]
-    },
-    {
-      name: 'Swampy farm',
-      popup: 'the swamps!',
-      latLng: [40.7202, -74.4406],
-      offers: [
-        {
-          quantity: 666,
-          unit: 'pounds',
-          resourceType: {
-            color: 'indigo',
-            fabric: 'squid'
-          }
-        }
-      ]
-    }
-  ]
-  let displayFarms = [...farms]
+  let agents = allAgents;
+  console.log(agents)
+  let displayAgents = [...agents]
   let panelInfo: any
 </script>
 
 {#if browser}
   <div class="relative h-full w-full">
-    <svelte:component this={MapComponent} markers={displayFarms} bind:panelInfo />
-	  <Search bind:allData={farms} bind:displayData={displayFarms} />
+    <svelte:component this={MapComponent} agents={displayAgents} bind:panelInfo />
+	  <Search bind:allData={agents} bind:displayData={displayAgents} />
     {#if panelInfo }
       <SidePanel bind:panelInfo />
     {/if}

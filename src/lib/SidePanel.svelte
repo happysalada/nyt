@@ -1,8 +1,14 @@
 <script lang="ts">
-  export let panelInfo: any
+  import type { Agent } from 'globals'
+  export let panelInfo: Agent | undefined
+  let dropdownOpen = false
 </script>
+
 <!-- Background overlay, show/hide based on slide-over state. -->
-<div style="z-index: 100000" class="fixed inset-y-0 right-0 pl-10 max-w-full flex sm:pl-16">
+<div
+  style="z-index: 100000"
+  class="fixed inset-y-0 right-0 pl-10 max-w-full flex sm:pl-16"
+>
   <!--
         Slide-over panel, show/hide based on slide-over state.
 
@@ -51,28 +57,18 @@
       <div>
         <div class="pb-1 sm:pb-6">
           <div>
-            <div class="relative h-40 sm:h-56">
+            <div class="flex">
               <img
-                class="absolute h-full w-full object-cover"
-                src="https://images.unsplash.com/photo-1501031170107-cfd33f0cbdcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&h=600&q=80"
+                class="ml-8 h-10"
+                src="https://cdn.shopify.com/s/files/1/0562/3434/4626/files/mini-mills-logo_1204x630.png?v=1619021372"
                 alt=""
               />
+              <div class="mx-8">
+                <p>{panelInfo && panelInfo.address}</p>
+              </div>
             </div>
             <div class="mt-6 px-4 sm:mt-8 sm:flex sm:items-end sm:px-6">
               <div class="sm:flex-1">
-                <div>
-                  <div class="flex items-center">
-                    <h3 class="font-bold text-xl text-gray-900 sm:text-2xl">
-                      Ashley Porter
-                    </h3>
-                    <span
-                      class="ml-2.5 bg-green-400 flex-shrink-0 inline-block h-2 w-2 rounded-full"
-                    >
-                      <span class="sr-only">Online</span>
-                    </span>
-                  </div>
-                  <p class="text-sm text-gray-500">@ashleyporter</p>
-                </div>
                 <div class="mt-5 flex flex-wrap space-y-3 sm:space-y-0 sm:space-x-3">
                   <button
                     type="button"
@@ -94,6 +90,7 @@
                         id="options-menu-button"
                         aria-expanded="false"
                         aria-haspopup="true"
+                        on:click={() => (dropdownOpen = !dropdownOpen)}
                       >
                         <span class="sr-only">Open options menu</span>
                         <!-- Heroicon name: solid/dots-vertical -->
@@ -122,6 +119,7 @@
 			                            -->
                       <div
                         class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        class:hidden={!dropdownOpen}
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="options-menu-button"
@@ -153,40 +151,33 @@
           </div>
         </div>
         <div class="px-4 pt-5 pb-5 sm:px-0 sm:pt-0">
-          <dl class="space-y-8 px-4 sm:px-6 sm:space-y-6">
-            <div>
-              <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">
-                Bio
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2">
-                <p>
-                  Enim feugiat ut ipsum, neque ut. Tristique mi id elementum praesent.
-                  Gravida in tempus feugiat netus enim aliquet a, quam scelerisque.
-                  Dictumst in convallis nec in bibendum aenean arcu.
-                </p>
-              </dd>
-            </div>
-            <div>
-              <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">
-                Location
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2">New York, NY, USA</dd>
-            </div>
-            <div>
-              <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">
-                Website
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2">ashleyporter.com</dd>
-            </div>
-            <div>
-              <dt class="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">
-                Birthday
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2">
-                <time datetime="1988-06-23"> June 23, 1988 </time>
-              </dd>
-            </div>
-          </dl>
+          <p class="ml-8"> Offering: </p>
+          <div class="mx-8">
+            <ul role="list" class="divide-y divide-gray-200">
+              {#each panelInfo.offers as {name, availableDate, price, priceUnit,  quantity, quantityUnit} }
+              <li class="py-4">
+                <div class="flex space-x-3">
+                  <img
+                    class="h-6 w-6 rounded-full"
+                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                    alt=""
+                  />
+                  <div class="flex-1 space-y-1">
+                    <div class="flex items-center justify-between">
+                      <h3 class="text-sm font-medium">{name}</h3>
+                      <p class="text-sm text-gray-500">From: {availableDate}</p>
+                    </div>
+                    <p class="text-sm text-gray-500">
+                      {quantity} {quantityUnit} @ {price} {priceUnit}
+                    </p>
+                  </div>
+                </div>
+              </li>
+              {/each}
+
+              <!-- More items... -->
+            </ul>
+          </div>
         </div>
       </div>
     </div>
