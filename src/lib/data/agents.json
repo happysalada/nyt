@@ -2,6 +2,7 @@
   {
     "name": "Laughing Goat Fiber Farm",
     "latLng": [42.44705, -76.56986],
+    "imageUrl": "/laughing_goat.png",
     "address": "1485 Mecklenburg Road Ithaca, NY 14850",
     "iconUrl": "/farm.svg",
     "offers": [
