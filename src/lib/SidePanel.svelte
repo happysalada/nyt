@@ -7,7 +7,7 @@
 <!-- Background overlay, show/hide based on slide-over state. -->
 <div
   style="z-index: 100000"
-  class="fixed inset-y-0 right-0 pl-10 max-w-full flex sm:pl-16"
+  class="fixed inset-y-0 right-0 ml-10 max-w-full flex sm:ml-16"
 >
   <!--
         Slide-over panel, show/hide based on slide-over state.
