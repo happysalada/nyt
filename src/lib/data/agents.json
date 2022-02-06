@@ -16,7 +16,7 @@
           "color": "white",
           "fabric": "alpaca"
         }
-      },
+      }
     ]
   },
   {
@@ -68,7 +68,7 @@
           "color": "white",
           "fabric": "alpaca"
         }
-      },
+      }
     ]
   },
   {
@@ -77,6 +77,18 @@
     "address": "321 Hardscrabble Rd North Salem, NY 10560",
     "latLng": [41.34955,-73.60903],
     "offers": [
+      {
+        "name": "White alpaca Unwashed",
+        "quantity": 60,
+        "price": 12,
+        "quantityUnit": "pounds",
+        "priceUnit": "$/pounds",
+        "availableDate": "2022/03/01",
+        "resourceType": {
+          "color": "white",
+          "fabric": "alpaca"
+        }
+      }
     ]
   },
   {
@@ -96,7 +108,7 @@
           "color": "white",
           "fabric": "alpaca"
         }
-      },
+      }
     ]
   },
   {
@@ -124,7 +136,7 @@
           "color": "white",
           "fabric": "alpaca"
         }
-      },
+      }
     ]
   },
   {
@@ -133,6 +145,18 @@
     "address": "2027 Rt 17B Bethel, NY 12720",
     "latLng": [41.68465966639109, -74.87434810668307],
     "offers": [
+      {
+        "name": "White alpaca Unwashed",
+        "quantity": 60,
+        "price": 12,
+        "quantityUnit": "pounds",
+        "priceUnit": "$/pounds",
+        "availableDate": "2022/03/01",
+        "resourceType": {
+          "color": "white",
+          "fabric": "alpaca"
+        }
+      }
     ]
   },
   {
@@ -152,7 +176,7 @@
           "color": "white",
           "fabric": "alpaca"
         }
-      },
+      }
     ]
   },
   {
@@ -172,7 +196,7 @@
           "color": "white",
           "fabric": "alpaca"
         }
-      },
+      }
     ]
   },
   {
@@ -192,7 +216,7 @@
           "color": "white",
           "fabric": "alpaca"
         }
-      },
+      }
     ]
   }
 ]
