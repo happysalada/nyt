@@ -24,7 +24,7 @@
       <div class="px-4 py-6 sm:px-6">
         <div class="flex items-start justify-between">
           <h2 id="slide-over-heading" class="text-lg font-medium text-gray-900">
-            Profile
+            {panelInfo && panelInfo.name}
           </h2>
           <div class="ml-3 h-7 flex items-center">
             <button
@@ -58,11 +58,28 @@
         <div class="pb-1 sm:pb-6">
           <div>
             <div class="flex">
-              <img
-                class="ml-8 h-10"
-                src="https://cdn.shopify.com/s/files/1/0562/3434/4626/files/mini-mills-logo_1204x630.png?v=1619021372"
-                alt=""
-              />
+              <!--
+               <img
+                 class="ml-8 h-10"
+                 src="https://cdn.shopify.com/s/files/1/0562/3434/4626/files/mini-mills-logo_1204x630.png?v=1619021372"
+                 alt=""
+               />
+              -->
+              <div class="ml-8">
+                <span
+                  class="inline-block h-14 w-14 rounded-full overflow-hidden bg-gray-100"
+                >
+                  <svg
+                    class="h-full w-full text-gray-300"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                </span>
+              </div>
               <div class="mx-8">
                 <p>{panelInfo && panelInfo.address}</p>
               </div>
@@ -151,28 +168,30 @@
           </div>
         </div>
         <div class="px-4 pt-5 pb-5 sm:px-0 sm:pt-0">
-          <p class="ml-8"> Offering: </p>
+          <p class="ml-8">Offering:</p>
           <div class="mx-8">
             <ul role="list" class="divide-y divide-gray-200">
-              {#each panelInfo.offers as {name, availableDate, price, priceUnit,  quantity, quantityUnit} }
-              <li class="py-4">
-                <div class="flex space-x-3">
-                  <img
-                    class="h-6 w-6 rounded-full"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-                    alt=""
-                  />
-                  <div class="flex-1 space-y-1">
-                    <div class="flex items-center justify-between">
-                      <h3 class="text-sm font-medium">{name}</h3>
-                      <p class="text-sm text-gray-500">From: {availableDate}</p>
+              {#each panelInfo.offers as { name, availableDate, price, priceUnit, quantity, quantityUnit }}
+                <li class="py-4">
+                  <div class="flex space-x-3">
+                    <img
+                      class="h-6 w-6 rounded-full"
+                      src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                      alt=""
+                    />
+                    <div class="flex-1 space-y-1">
+                      <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-medium">{name}</h3>
+                        <p class="text-sm text-gray-500">From: {availableDate}</p>
+                      </div>
+                      <p class="text-sm text-gray-500">
+                        {quantity}
+                        {quantityUnit} @ {price}
+                        {priceUnit}
+                      </p>
                     </div>
-                    <p class="text-sm text-gray-500">
-                      {quantity} {quantityUnit} @ {price} {priceUnit}
-                    </p>
                   </div>
-                </div>
-              </li>
+                </li>
               {/each}
 
               <!-- More items... -->
