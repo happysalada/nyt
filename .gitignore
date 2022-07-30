@@ -6,4 +6,6 @@
 /functions
 .idea/.gitignore
 .idea/
+.direnv/
+.hc
 

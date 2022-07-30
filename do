@@ -1,7 +1,7 @@
 #!/usr/bin/env oil
 
 proc dev() {
-  pnpm run dev
+  npm run dev
 }
 
 proc update_deps() {
@@ -9,7 +9,7 @@ proc update_deps() {
 }
 
 proc build() {
-  pnpm run build
+  npm run build
 }
 
 @ARGV
