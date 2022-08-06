@@ -17,6 +17,7 @@
 
       # Nixpkgs instantiated for supported system types.
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; overlays = self.overlays; });
+      nixpkgsNoOverlays = forAllSystems (system: import nixpkgs { inherit system; });
     in
     {
       overlays = [ devshell.overlay ];
@@ -26,7 +27,7 @@
             pkgs = nixpkgsFor.${system};
           in
           pkgs.devshell.mkShell {
-            packages = with pkgs; [ ];
+            packages = [ ];
             env = [
               {
                 name = "PATH";
@@ -48,12 +49,14 @@
                 command = "hc sandbox create -n 1 -d hrea_tester network quic";
               }
               {
+                help = "install hrea happ to sandbox";
+                name = "install_hrea";
+                command = "hc sandbox call install-app-bundle ./hrea_suite.happ";
+              }
+              {
                 help = "start hrea";
                 name = "start_hrea";
-                command = ''
-                  hc sandbox call install-app-bundle ./hrea_suite.happ
-                  hc sandbox run --all --port 4000
-                '';
+                command = "hc sandbox run --all --ports 4000";
               }
             ];
           }

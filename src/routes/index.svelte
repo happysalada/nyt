@@ -5,12 +5,42 @@
   import SidePanel from '$lib/SidePanel.svelte'
   import allAgents from '$lib/data/agents.json'
 
+  import bindSchema, { autoConnect } from '@valueflows/vf-graphql-holochain'
+  import { gql } from 'graphql-tag'
+
+
   let MapComponent
   onMount(async () => {
     if (browser) {
       MapComponent = (await import('$lib/Map.svelte')).default
     }
+
+    // const {dnaConfig} = await autoConnect();
+    // const schema = await bindSchema({ conductorUri: 'ws://localhost:4000', dnaConfig: {} });
+    // console.log(schema);
+    // console.log(dnaConfig, "dna");
+    // console.log(conductorUri, "conductor");
+
+    // const query = gql`
+    //   query myAgent {
+    //     id
+    //     name
+    //   }`
+
+    // const response = await fetch('ws://localhost:4000', {
+    //    method: 'POST',
+    //    headers: {
+    //      'Content-Type': 'application/json',
+    //    },
+    //    body: JSON.stringify({
+    //      query,
+    //    })
+    //  });
+
+    //  const data = await response.json();
+    //  console.log(data);
   })
+
   let agents = allAgents;
   console.log(agents)
   let displayAgents = [...agents]
