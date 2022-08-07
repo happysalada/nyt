@@ -5,7 +5,6 @@
   import SidePanel from '$lib/SidePanel.svelte'
   import allAgents from '$lib/data/agents.json'
 
-  import { graphql } from 'graphql'
   import bindSchema, { autoConnect } from '@valueflows/vf-graphql-holochain'
   import { gql } from 'graphql-tag'
 
