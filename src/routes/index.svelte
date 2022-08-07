@@ -15,9 +15,9 @@
       MapComponent = (await import('$lib/Map.svelte')).default
     }
 
-    // const {dnaConfig} = await autoConnect();
-    // const schema = await bindSchema({ conductorUri: 'ws://localhost:4000', dnaConfig: {} });
-    // console.log(schema);
+    const {dnaConfig} = await autoConnect('ws://localhost:4000', 'hrea_suite');
+    const schema = await bindSchema({ conductorUri: 'ws://localhost:4000', dnaConfig });
+    
     // console.log(dnaConfig, "dna");
     // console.log(conductorUri, "conductor");
 
