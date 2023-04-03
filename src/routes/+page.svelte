@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from '$app/env'
+  import { browser } from '$app/environment'
   import { onMount } from 'svelte'
   import Search from '$lib/Search.svelte'
   import SidePanel from '$lib/SidePanel.svelte'
